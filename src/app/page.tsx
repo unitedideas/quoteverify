@@ -2,10 +2,18 @@
 
 import { useState } from 'react';
 
+interface VerificationResult {
+  found: boolean;
+  confidence: number;
+  context?: string;
+  reasoning?: string;
+  error?: string;
+}
+
 export default function Home() {
   const [quote, setQuote] = useState('');
   const [source, setSource] = useState('');
-  const [result, setResult] = useState<any>(null);
+  const [result, setResult] = useState<VerificationResult | null>(null);
   const [loading, setLoading] = useState(false);
 
   const verifyQuote = async () => {
